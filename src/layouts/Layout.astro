@@ -1,0 +1,144 @@
+---
+import '../styles/global.css';
+import Navigation from '../components/Navigation.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "ARKEIN — Full-Stack AI Engineer & System Architect",
+  description = "Architecting Autonomous AI Systems, High-Throughput Inference Engines, and Interactive Web Applications."
+} = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content={description}>
+  <title>{title}</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="relative min-h-screen bg-void-950 selection:bg-arctic-cobalt selection:text-void-950 text-slate-200">
+  <!-- Top Aurora Scroll Progress Laser -->
+  <div id="scroll-progress-bar" style="width: 0%;"></div>
+
+  <!-- Dynamic Aurora Background Engine -->
+  <div class="aurora-container" aria-hidden="true">
+    <div id="aurora-blob-1" class="aurora-blob-1"></div>
+    <div id="aurora-blob-2" class="aurora-blob-2"></div>
+    <div id="aurora-blob-3" class="aurora-blob-3"></div>
+  </div>
+  
+  <Navigation />
+  
+  <slot />
+
+  <!-- Native Aurora Scroll & Parallax Engine Script -->
+  <script is:inline>
+    (function() {
+      function setupScrollEngine() {
+        const progressBar = document.getElementById('scroll-progress-bar');
+        const blob1 = document.getElementById('aurora-blob-1');
+        const blob2 = document.getElementById('aurora-blob-2');
+        const blob3 = document.getElementById('aurora-blob-3');
+
+        // 1. Scroll Progress & Dynamic Aurora Parallax Drift
+        let ticking = false;
+        function onScrollUpdate() {
+          const scrollY = window.scrollY || window.pageYOffset;
+          const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+          
+          if (docHeight > 0 && progressBar) {
+            const scrollPercent = Math.min(100, Math.max(0, (scrollY / docHeight) * 100));
+            progressBar.style.width = scrollPercent + '%';
+          }
+
+          // Parallax depth shift for background aurora blobs
+          if (blob1) blob1.style.transform = `translate3d(0, ${scrollY * 0.14}px, 0)`;
+          if (blob2) blob2.style.transform = `translate3d(0, ${-scrollY * 0.10}px, 0)`;
+          if (blob3) blob3.style.transform = `translate3d(0, ${scrollY * 0.06}px, 0)`;
+
+          ticking = false;
+        }
+
+        window.addEventListener('scroll', () => {
+          if (!ticking) {
+            window.requestAnimationFrame(onScrollUpdate);
+            ticking = true;
+          }
+        }, { passive: true });
+
+        // Initial progress calculation
+        onScrollUpdate();
+
+        // 2. Continuous Intersection Observer for Repeating Scroll Animations
+        const observerOptions = {
+          root: null,
+          rootMargin: '-20px 0px -30px 0px',
+          threshold: [0, 0.12]
+        };
+
+        const revealObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            const target = entry.target;
+
+            if (entry.isIntersecting) {
+              // Single element reveal
+              if (target.hasAttribute('data-reveal')) {
+                const delay = parseInt(target.getAttribute('data-reveal-delay') || '0', 10);
+                if (delay > 0) {
+                  setTimeout(() => {
+                    if (entry.isIntersecting) target.classList.add('revealed');
+                  }, delay);
+                } else {
+                  target.classList.add('revealed');
+                }
+              }
+
+              // Stagger group reveal
+              if (target.hasAttribute('data-reveal-group')) {
+                target.classList.add('revealed');
+                const items = target.querySelectorAll('.reveal-item');
+                const baseDelay = parseInt(target.getAttribute('data-stagger-delay') || '100', 10);
+                items.forEach((item, index) => {
+                  item.style.transitionDelay = `${index * baseDelay}ms`;
+                });
+              }
+            } else {
+              // Reset when leaving viewport so animation replays upon every scroll entry
+              target.classList.remove('revealed');
+              if (target.hasAttribute('data-reveal-group')) {
+                const items = target.querySelectorAll('.reveal-item');
+                items.forEach((item) => {
+                  item.style.transitionDelay = '0ms';
+                });
+              }
+            }
+          });
+        }, observerOptions);
+
+        // Register all reveal targets without unobserving (continuous re-triggering on scroll)
+        const targets = document.querySelectorAll('[data-reveal], [data-reveal-group]');
+        targets.forEach(el => {
+          revealObserver.observe(el);
+        });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', setupScrollEngine);
+      } else {
+        setupScrollEngine();
+      }
+
+      // Support Astro Client Lifecycle
+      document.addEventListener('astro:page-load', setupScrollEngine);
+    })();
+  </script>
+</body>
+</html>

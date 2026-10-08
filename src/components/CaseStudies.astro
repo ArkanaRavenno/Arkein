@@ -1,0 +1,60 @@
+---
+import { projects } from '../data/projects';
+---
+<section id="case-studies" class="space-y-12 scroll-mt-24">
+  <div class="space-y-3" data-reveal>
+    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-badge text-xs font-mono text-arctic-cobalt">
+      <span>03 / PRODUCTION CASE STUDIES</span>
+    </div>
+    <h2 class="font-heading text-3xl sm:text-4xl font-bold text-white">
+      Engineered for <span class="text-arctic-cobalt">Scale & Precision</span>
+    </h2>
+    <p class="text-slate-400 text-sm max-w-xl">
+      Setiap sistem dirancang dengan fondasi matematis, evaluasi berbasis metrik, dan arsitektur resilient.
+    </p>
+  </div>
+
+  <div class="space-y-8">
+    {projects.map((proj, idx) => (
+      <div class="glass-panel rounded-2xl p-8 border border-white/10 space-y-6" data-reveal data-reveal-delay={(idx * 120).toString()}>
+        <div class="flex flex-wrap items-center justify-between gap-4">
+          <div>
+            <span class={`text-xs font-mono ${proj.tagColor} tracking-wider uppercase font-semibold`}>
+              {proj.tag}
+            </span>
+            <h3 class="font-heading text-2xl font-bold text-white mt-1">{proj.title}</h3>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            {proj.stack.map(tech => (
+              <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-slate-300">
+                {tech}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2">
+          <div class="space-y-2">
+            <h4 class="font-mono text-xs text-slate-400 uppercase tracking-wider font-semibold">The Challenge</h4>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              {proj.challenge}
+            </p>
+          </div>
+          <div class="space-y-2">
+            <h4 class="font-mono text-xs text-slate-400 uppercase tracking-wider font-semibold">System Architecture</h4>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              {proj.architecture}
+            </p>
+          </div>
+          <div class="space-y-2">
+            <h4 class="font-mono text-xs text-slate-400 uppercase tracking-wider font-semibold">Measured Impact</h4>
+            <div class="p-3 rounded-xl bg-void-950/80 border border-arctic-cobalt/30 space-y-1 font-mono text-xs">
+              <div class="text-arctic-cobalt font-bold">{proj.impactBadge}</div>
+              <div class="text-slate-300 text-[11px]">{proj.impactDesc}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>

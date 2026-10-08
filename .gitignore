@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+vendor/
+
+# Build outputs
+dist/
+build/
+.astro/
+.next/
+
+# Environment files & Secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+id_rsa
+id_ed25519
+
+# Testing & Coverage
+coverage/
+playwright-report/
+test-results/
+
+# Editor & Local Superpowers
+.superpowers/
+.DS_Store
+*.log
