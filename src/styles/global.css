@@ -309,10 +309,11 @@ body {
   }
 }
 
-/* 0.5. About: Bento Profile Cards with Specular Glare & Tactical HUD */
+/* 0.5. About: Bento Profile Cards with Specular Glare & Ambient Glow */
 .about-bento-card {
   --mouse-x: 50%;
   --mouse-y: 50%;
+  border-radius: 1.5rem;
   transition: border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
               box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
               background 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -320,10 +321,10 @@ body {
 }
 
 .about-bento-card:hover {
-  border-color: rgba(96, 165, 250, 0.52);
-  background: linear-gradient(145deg, rgba(16, 26, 46, 0.92) 0%, rgba(9, 14, 26, 0.85) 100%);
-  box-shadow: 0 24px 50px -12px rgba(0, 0, 0, 0.78),
-              0 0 35px 2px rgba(96, 165, 250, 0.20),
+  border-color: rgba(96, 165, 250, 0.55);
+  background: linear-gradient(145deg, rgba(16, 26, 46, 0.94) 0%, rgba(9, 14, 26, 0.86) 100%);
+  box-shadow: 0 24px 50px -12px rgba(0, 0, 0, 0.80),
+              0 0 35px 2px rgba(96, 165, 250, 0.22),
               inset 0 1px 0 0 rgba(255, 255, 255, 0.25);
 }
 
@@ -331,80 +332,22 @@ body {
 .about-card-glare {
   position: absolute;
   inset: 0;
+  border-radius: inherit;
   background: radial-gradient(
-    circle 380px at var(--mouse-x, 50%) var(--mouse-y, 50%),
-    rgba(96, 165, 250, 0.16) 0%,
-    rgba(56, 189, 248, 0.08) 35%,
+    circle 340px at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(96, 165, 250, 0.18) 0%,
+    rgba(56, 189, 248, 0.08) 40%,
     transparent 70%
   );
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.4s ease;
-  z-index: 2;
+  z-index: 1;
   mix-blend-mode: screen;
 }
 
 .about-bento-card:hover .about-card-glare {
   opacity: 1;
-}
-
-/* Cybernetic Laser Top Scan Line */
-.about-scan-line {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(56, 189, 248, 0.4) 20%,
-    #38bdf8 50%,
-    rgba(96, 165, 250, 0.4) 80%,
-    transparent 100%
-  );
-  opacity: 0;
-  transform: scaleX(0.2);
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
-  pointer-events: none;
-  z-index: 5;
-  box-shadow: 0 0 12px rgba(56, 189, 248, 0.8), 0 0 22px rgba(96, 165, 250, 0.5);
-}
-
-.about-bento-card:hover .about-scan-line {
-  opacity: 1;
-  transform: scaleX(1);
-}
-
-/* Tactical HUD Corner Brackets Hover Expansion */
-.about-hud-bracket {
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.3s ease,
-              filter 0.3s ease;
-}
-
-.about-bento-card:hover .about-hud-tl {
-  transform: translate3d(-2.5px, -2.5px, 0);
-  border-color: #38bdf8;
-  filter: drop-shadow(0 0 6px rgba(56, 189, 248, 0.85));
-}
-
-.about-bento-card:hover .about-hud-tr {
-  transform: translate3d(2.5px, -2.5px, 0);
-  border-color: #38bdf8;
-  filter: drop-shadow(0 0 6px rgba(56, 189, 248, 0.85));
-}
-
-.about-bento-card:hover .about-hud-bl {
-  transform: translate3d(-2.5px, 2.5px, 0);
-  border-color: #38bdf8;
-  filter: drop-shadow(0 0 6px rgba(56, 189, 248, 0.85));
-}
-
-.about-bento-card:hover .about-hud-br {
-  transform: translate3d(2.5px, 2.5px, 0);
-  border-color: #38bdf8;
-  filter: drop-shadow(0 0 6px rgba(56, 189, 248, 0.85));
 }
 
 /* Interactive Value Chips in Main Story */
@@ -448,9 +391,13 @@ body {
 }
 
 .about-bento-card:hover .about-pillar-badge {
-  transform: translateY(-2px) scale(1.06);
-  box-shadow: 0 0 18px rgba(96, 165, 250, 0.35);
-  border-color: rgba(96, 165, 250, 0.6);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 4px 18px -2px rgba(96, 165, 250, 0.40);
+  border-color: rgba(96, 165, 250, 0.70);
+}
+
+.about-bento-card > *:not([aria-hidden="true"]) {
+  transform: none !important;
 }
 
 /* 1. Philosophy: Cybernetic Decrypt Focus */
@@ -887,9 +834,7 @@ body {
 .case-study-card .cs-scan-line,
 .case-study-card .cs-hud-bracket,
 .case-study-card .blueprint-circuit-svg,
-.about-bento-card .about-card-glare,
-.about-bento-card .about-scan-line,
-.about-bento-card .about-hud-bracket {
+.about-bento-card .about-card-glare {
   position: absolute !important;
 }
 

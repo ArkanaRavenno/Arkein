@@ -25,17 +25,9 @@
   <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-stretch">
     <!-- Card 1: Main Story & Background (Col-span 8) -->
     <div class="md:col-span-8 glass-panel about-bento-card aurora-beam p-7 sm:p-9 rounded-3xl border-white/10 relative overflow-hidden flex flex-col justify-between group cursor-default select-none" data-reveal data-reveal-delay="100">
-      <!-- Background Decorative Layers (Contained to avoid layout stretching) -->
-      <div class="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
-        <!-- Tactical HUD Corner Brackets -->
-        <span class="about-hud-bracket about-hud-tl absolute top-3 left-3 w-2.5 h-2.5 border-t border-l border-arctic-cobalt/40 transition-all duration-300"></span>
-        <span class="about-hud-bracket about-hud-tr absolute top-3 right-3 w-2.5 h-2.5 border-t border-r border-arctic-cobalt/40 transition-all duration-300"></span>
-        <span class="about-hud-bracket about-hud-bl absolute bottom-3 left-3 w-2.5 h-2.5 border-b border-l border-arctic-cobalt/40 transition-all duration-300"></span>
-        <span class="about-hud-bracket about-hud-br absolute bottom-3 right-3 w-2.5 h-2.5 border-b border-r border-arctic-cobalt/40 transition-all duration-300"></span>
-
-        <!-- Soft Specular Glare & Scan Line -->
+      <!-- Background Decorative Layers -->
+      <div class="absolute inset-0 pointer-events-none overflow-hidden rounded-3xl" aria-hidden="true">
         <div class="about-card-glare"></div>
-        <div class="about-scan-line"></div>
         <div class="absolute -top-16 -right-16 w-64 h-64 bg-arctic-cobalt/10 rounded-full blur-3xl group-hover:bg-arctic-cobalt/25 transition-all duration-700"></div>
       </div>
       
@@ -82,13 +74,9 @@
     <!-- Card 2: Persona Snapshot & Vitals (Col-span 4) -->
     <div class="md:col-span-4 glass-panel about-bento-card p-7 rounded-3xl border-white/10 relative overflow-hidden flex flex-col justify-between group cursor-default select-none" data-reveal data-reveal-delay="180">
       <!-- Background Decorative Layers -->
-      <div class="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
-        <span class="about-hud-bracket about-hud-tl absolute top-3 left-3 w-2.5 h-2.5 border-t border-l border-sky-frost/40 transition-all duration-300"></span>
-        <span class="about-hud-bracket about-hud-tr absolute top-3 right-3 w-2.5 h-2.5 border-t border-r border-sky-frost/40 transition-all duration-300"></span>
-        <span class="about-hud-bracket about-hud-bl absolute bottom-3 left-3 w-2.5 h-2.5 border-b border-l border-sky-frost/40 transition-all duration-300"></span>
-        <span class="about-hud-bracket about-hud-br absolute bottom-3 right-3 w-2.5 h-2.5 border-b border-r border-sky-frost/40 transition-all duration-300"></span>
+      <div class="absolute inset-0 pointer-events-none overflow-hidden rounded-3xl" aria-hidden="true">
         <div class="about-card-glare"></div>
-        <div class="about-scan-line"></div>
+        <div class="absolute -top-12 -right-12 w-48 h-48 bg-sky-frost/10 rounded-full blur-3xl group-hover:bg-sky-frost/25 transition-all duration-700"></div>
       </div>
 
       <div class="space-y-6 relative z-10">
@@ -143,83 +131,89 @@
     </div>
 
     <!-- Card 3: Deep Fundamentals (Col-span 4) -->
-    <div class="md:col-span-4 glass-panel about-bento-card p-6 sm:p-7 rounded-3xl border-white/10 space-y-3.5 group cursor-default select-none relative overflow-hidden flex flex-col justify-between" data-reveal data-reveal-delay="240">
-      <div class="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
-        <span class="about-hud-bracket about-hud-tl absolute top-2.5 left-2.5 w-2 h-2 border-t border-l border-arctic-cobalt/40 transition-all duration-300"></span>
-        <span class="about-hud-bracket about-hud-tr absolute top-2.5 right-2.5 w-2 h-2 border-t border-r border-arctic-cobalt/40 transition-all duration-300"></span>
-        <span class="about-hud-bracket about-hud-bl absolute bottom-2.5 left-2.5 w-2 h-2 border-b border-l border-arctic-cobalt/40 transition-all duration-300"></span>
-        <span class="about-hud-bracket about-hud-br absolute bottom-2.5 right-2.5 w-2 h-2 border-b border-r border-arctic-cobalt/40 transition-all duration-300"></span>
+    <div class="md:col-span-4 glass-panel about-bento-card p-6 sm:p-7 rounded-3xl border-white/10 group cursor-default select-none relative overflow-hidden flex flex-col justify-between" data-reveal data-reveal-delay="240">
+      <div class="absolute inset-0 pointer-events-none overflow-hidden rounded-3xl" aria-hidden="true">
         <div class="about-card-glare"></div>
-        <div class="about-scan-line"></div>
+        <div class="absolute -top-10 -right-10 w-36 h-36 bg-arctic-cobalt/10 rounded-full blur-2xl group-hover:bg-arctic-cobalt/25 transition-all duration-500"></div>
       </div>
 
-      <div class="space-y-3 relative z-10">
-        <div class="w-10 h-10 rounded-xl bg-arctic-cobalt/15 border border-arctic-cobalt/30 flex items-center justify-center text-arctic-cobalt font-mono font-bold text-sm about-pillar-badge">
+      <div class="space-y-3.5 relative z-10">
+        <div class="w-11 h-11 rounded-2xl bg-arctic-cobalt/15 border border-arctic-cobalt/30 flex items-center justify-center text-arctic-cobalt font-mono font-bold text-sm about-pillar-badge group-hover:bg-arctic-cobalt/25 group-hover:border-arctic-cobalt/60 transition-all duration-300">
           01
         </div>
-        <h4 class="font-heading font-bold text-lg text-white group-hover:text-arctic-cobalt transition-colors">Fondasi yang Kokoh</h4>
+        <h4 class="font-heading font-bold text-lg text-white group-hover:text-arctic-cobalt transition-colors duration-300">
+          Fondasi yang Kokoh
+        </h4>
         <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
           Bagi saya, memahami konsep dasar komputasi—seperti struktur data, algoritma, siklus hidup software, dan arsitektur kode bersih—jauh lebih berharga daripada sekadar menghafal framework sesaat.
         </p>
       </div>
 
-      <div class="pt-2 text-[10px] font-mono text-arctic-cobalt/80 tracking-wider uppercase relative z-10 flex items-center gap-1.5">
-        <span class="w-1 h-1 rounded-full bg-arctic-cobalt"></span>
-        <span>Core First Principle</span>
+      <!-- Integrated Pillar Indicator Footer -->
+      <div class="pt-4 mt-6 border-t border-white/10 flex items-center justify-between text-xs font-mono relative z-10">
+        <span class="text-arctic-cobalt font-semibold flex items-center gap-1.5">
+          <span class="w-1.5 h-1.5 rounded-full bg-arctic-cobalt animate-pulse"></span>
+          Core Principles
+        </span>
+        <span class="text-slate-400 text-[11px]">Architecture First</span>
       </div>
     </div>
 
     <!-- Card 4: Craftsmanship & Design Polish (Col-span 4) -->
-    <div class="md:col-span-4 glass-panel about-bento-card p-6 sm:p-7 rounded-3xl border-white/10 space-y-3.5 group cursor-default select-none relative overflow-hidden flex flex-col justify-between" data-reveal data-reveal-delay="300">
-      <div class="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
-        <span class="about-hud-bracket about-hud-tl absolute top-2.5 left-2.5 w-2 h-2 border-t border-l border-sky-frost/40 transition-all duration-300"></span>
-        <span class="about-hud-bracket about-hud-tr absolute top-2.5 right-2.5 w-2 h-2 border-t border-r border-sky-frost/40 transition-all duration-300"></span>
-        <span class="about-hud-bracket about-hud-bl absolute bottom-2.5 left-2.5 w-2 h-2 border-b border-l border-sky-frost/40 transition-all duration-300"></span>
-        <span class="about-hud-bracket about-hud-br absolute bottom-2.5 right-2.5 w-2 h-2 border-b border-r border-sky-frost/40 transition-all duration-300"></span>
+    <div class="md:col-span-4 glass-panel about-bento-card p-6 sm:p-7 rounded-3xl border-white/10 group cursor-default select-none relative overflow-hidden flex flex-col justify-between" data-reveal data-reveal-delay="300">
+      <div class="absolute inset-0 pointer-events-none overflow-hidden rounded-3xl" aria-hidden="true">
         <div class="about-card-glare"></div>
-        <div class="about-scan-line"></div>
+        <div class="absolute -top-10 -right-10 w-36 h-36 bg-sky-frost/10 rounded-full blur-2xl group-hover:bg-sky-frost/25 transition-all duration-500"></div>
       </div>
 
-      <div class="space-y-3 relative z-10">
-        <div class="w-10 h-10 rounded-xl bg-sky-frost/15 border border-sky-frost/30 flex items-center justify-center text-sky-frost font-mono font-bold text-sm about-pillar-badge">
+      <div class="space-y-3.5 relative z-10">
+        <div class="w-11 h-11 rounded-2xl bg-sky-frost/15 border border-sky-frost/30 flex items-center justify-center text-sky-frost font-mono font-bold text-sm about-pillar-badge group-hover:bg-sky-frost/25 group-hover:border-sky-frost/60 transition-all duration-300">
           02
         </div>
-        <h4 class="font-heading font-bold text-lg text-white group-hover:text-sky-frost transition-colors">Estetika & Sensibilitas UI</h4>
+        <h4 class="font-heading font-bold text-lg text-white group-hover:text-sky-frost transition-colors duration-300">
+          Estetika & Sensibilitas UI
+        </h4>
         <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
           Aplikasi yang hebat tidak hanya cepat dan stabil, tetapi juga terasa hidup saat digunakan. Saya menaruh perhatian khusus pada detail interaksi mikro, tipografi yang rapi, serta transisi visual yang natural.
         </p>
       </div>
 
-      <div class="pt-2 text-[10px] font-mono text-sky-frost/80 tracking-wider uppercase relative z-10 flex items-center gap-1.5">
-        <span class="w-1 h-1 rounded-full bg-sky-frost"></span>
-        <span>Craft & Interactions</span>
+      <!-- Integrated Pillar Indicator Footer -->
+      <div class="pt-4 mt-6 border-t border-white/10 flex items-center justify-between text-xs font-mono relative z-10">
+        <span class="text-sky-frost font-semibold flex items-center gap-1.5">
+          <span class="w-1.5 h-1.5 rounded-full bg-sky-frost animate-pulse"></span>
+          Craft & Polish
+        </span>
+        <span class="text-slate-400 text-[11px]">Micro-Interactions</span>
       </div>
     </div>
 
     <!-- Card 5: Curiosity & Exploration (Col-span 4) -->
-    <div class="md:col-span-4 glass-panel about-bento-card p-6 sm:p-7 rounded-3xl border-white/10 space-y-3.5 group cursor-default select-none relative overflow-hidden flex flex-col justify-between" data-reveal data-reveal-delay="360">
-      <div class="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
-        <span class="about-hud-bracket about-hud-tl absolute top-2.5 left-2.5 w-2 h-2 border-t border-l border-pure-platinum/40 transition-all duration-300"></span>
-        <span class="about-hud-bracket about-hud-tr absolute top-2.5 right-2.5 w-2 h-2 border-t border-r border-pure-platinum/40 transition-all duration-300"></span>
-        <span class="about-hud-bracket about-hud-bl absolute bottom-2.5 left-2.5 w-2.5 h-2.5 border-b border-l border-pure-platinum/40 transition-all duration-300"></span>
-        <span class="about-hud-bracket about-hud-br absolute bottom-2.5 right-2.5 w-2.5 h-2.5 border-b border-r border-pure-platinum/40 transition-all duration-300"></span>
+    <div class="md:col-span-4 glass-panel about-bento-card p-6 sm:p-7 rounded-3xl border-white/10 group cursor-default select-none relative overflow-hidden flex flex-col justify-between" data-reveal data-reveal-delay="360">
+      <div class="absolute inset-0 pointer-events-none overflow-hidden rounded-3xl" aria-hidden="true">
         <div class="about-card-glare"></div>
-        <div class="about-scan-line"></div>
+        <div class="absolute -top-10 -right-10 w-36 h-36 bg-pure-platinum/10 rounded-full blur-2xl group-hover:bg-pure-platinum/20 transition-all duration-500"></div>
       </div>
 
-      <div class="space-y-3 relative z-10">
-        <div class="w-10 h-10 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center text-pure-platinum font-mono font-bold text-sm about-pillar-badge">
+      <div class="space-y-3.5 relative z-10">
+        <div class="w-11 h-11 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center text-pure-platinum font-mono font-bold text-sm about-pillar-badge group-hover:bg-white/20 group-hover:border-white/50 transition-all duration-300">
           03
         </div>
-        <h4 class="font-heading font-bold text-lg text-white group-hover:text-pure-platinum transition-colors">Eksplorasi Tanpa Henti</h4>
+        <h4 class="font-heading font-bold text-lg text-white group-hover:text-pure-platinum transition-colors duration-300">
+          Eksplorasi Tanpa Henti
+        </h4>
         <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
           Dunia teknologi bergerak cepat. Di waktu luang, saya gemar mengeksplorasi pustaka open-source baru, membaca dokumentasi arsitektur, dan membangun eksperimen kode untuk menguji ide-ide segar.
         </p>
       </div>
 
-      <div class="pt-2 text-[10px] font-mono text-pure-platinum/80 tracking-wider uppercase relative z-10 flex items-center gap-1.5">
-        <span class="w-1 h-1 rounded-full bg-pure-platinum"></span>
-        <span>Always Iterating</span>
+      <!-- Integrated Pillar Indicator Footer -->
+      <div class="pt-4 mt-6 border-t border-white/10 flex items-center justify-between text-xs font-mono relative z-10">
+        <span class="text-pure-platinum font-semibold flex items-center gap-1.5">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+          Continuous Loop
+        </span>
+        <span class="text-slate-400 text-[11px]">Build & Iterate</span>
       </div>
     </div>
   </div>
