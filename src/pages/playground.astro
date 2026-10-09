@@ -1,0 +1,207 @@
+---
+import Layout from '../layouts/Layout.astro';
+import NeuralLab from '../components/NeuralLab.astro';
+---
+
+<Layout 
+  title="Arkein AI Playground — Autonomous Personal Agent & Neural Core"
+  description="Konsol dialog mandiri dengan representasi cerdas Arkana Ravenno. Didukung oleh integrasi 9Router lokal dengan memori multi-turn, penalaran adaptif, dan inferensi real-time."
+>
+  <main class="relative z-10 pt-28 pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-12">
+    
+    <!-- Top Return & Breadcrumb Bar -->
+    <div class="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-4 font-mono text-xs">
+      <a 
+        href="/" 
+        class="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white/5 hover:bg-arctic-cobalt/20 border border-white/10 hover:border-arctic-cobalt/50 text-slate-300 hover:text-white transition-all group"
+      >
+        <svg class="w-4 h-4 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+        <span>Kembali ke Portofolio Utama</span>
+      </a>
+
+      <div class="flex items-center gap-2.5 text-slate-400">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span class="text-slate-300 font-semibold">STANDALONE CONSOLE</span>
+        <span class="text-slate-600">//</span>
+        <span class="text-arctic-cobalt">ROUTE: /playground</span>
+      </div>
+    </div>
+
+    <!-- Main Playground Stage (Split Grid for Desktop) -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      
+      <!-- Primary Neural Console (8 Columns on Desktop) -->
+      <div class="lg:col-span-8">
+        <NeuralLab />
+      </div>
+
+      <!-- Agent Inspector & Telemetry Sidebar (4 Columns on Desktop) -->
+      <aside class="lg:col-span-4 space-y-6">
+        
+        <!-- Sidebar Card 1: Dual AI Gateway Info (Cloud & Local) -->
+        <div class="glass-panel p-5 rounded-2xl border-white/10 space-y-4">
+          <div class="flex items-center justify-between border-b border-white/10 pb-3">
+            <span class="font-mono text-xs text-arctic-cobalt font-semibold flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-arctic-cobalt animate-ping"></span>
+              DUAL AI GATEWAY ARCHITECTURE
+            </span>
+            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-bold">
+              CLOUD & LOKAL
+            </span>
+          </div>
+
+          <p class="text-slate-300 text-xs leading-relaxed">
+            Arsitektur playground ini siap digunakan baik saat pengembangan lokal maupun saat di-hosting online 24/7 ke publik.
+          </p>
+
+          <div class="space-y-2 font-mono text-[11px] bg-void-950/80 p-3 rounded-xl border border-white/5">
+            <div class="flex justify-between text-slate-400">
+              <span>Cloud 24/7:</span>
+              <span class="text-sky-300 font-semibold">OpenRouter AI</span>
+            </div>
+            <div class="flex justify-between text-slate-400">
+              <span>Local Dev:</span>
+              <span class="text-emerald-400">9Router (Port 20128)</span>
+            </div>
+            <div class="flex justify-between text-slate-400">
+              <span>Memory:</span>
+              <span class="text-white font-semibold">Multi-Turn Stateful</span>
+            </div>
+            <div class="flex justify-between text-slate-400">
+              <span>Zero-Crash:</span>
+              <span class="text-amber-300">Local Persona Core</span>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-2 pt-1 font-mono text-xs">
+            <a 
+              href="https://openrouter.ai/keys" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="flex items-center justify-center gap-1.5 py-2 px-2.5 rounded-xl bg-void-900 border border-arctic-cobalt/40 text-arctic-cobalt hover:bg-arctic-cobalt hover:text-void-950 text-[11px] font-semibold transition-all text-center"
+            >
+              <span>OpenRouter Keys</span>
+              <svg class="w-3 h-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+            </a>
+            <a 
+              href="http://localhost:20128/dashboard" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="flex items-center justify-center gap-1.5 py-2 px-2.5 rounded-xl bg-void-900 border border-white/10 text-slate-300 hover:text-white hover:border-emerald-400/50 text-[11px] font-semibold transition-all text-center"
+            >
+              <span>9Router Lokal</span>
+              <svg class="w-3 h-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Sidebar Card 2: Fair Usage & Token Longevity Defense -->
+        <div class="glass-panel p-5 rounded-2xl border-white/10 space-y-3 font-mono text-xs">
+          <div class="flex items-center justify-between border-b border-white/10 pb-3">
+            <span class="text-amber-300 font-semibold flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+              FAIR USAGE & DEFENSE SYSTEM
+            </span>
+            <span class="text-[10px] text-slate-400">ANTI-EXHAUSTION</span>
+          </div>
+
+          <div class="space-y-2.5 text-[11px] text-slate-300 font-sans">
+            <div class="p-2.5 rounded-xl bg-void-950/60 border border-white/5 space-y-1">
+              <div class="font-semibold text-white font-mono flex items-center gap-1.5">
+                <span class="text-sky-400">01.</span>
+                <span>Session Quota Guard (10 Credits/Hari)</span>
+              </div>
+              <p class="text-slate-400 text-[11px] leading-relaxed">
+                Mencegah bot atau crawler menghabiskan token kuota publik dengan pembatasan otomatis berbasis hari.
+              </p>
+            </div>
+
+            <div class="p-2.5 rounded-xl bg-void-950/60 border border-white/5 space-y-1">
+              <div class="font-semibold text-white font-mono flex items-center gap-1.5">
+                <span class="text-emerald-400">02.</span>
+                <span>Bring Your Own Key (BYOK Unlimited)</span>
+              </div>
+              <p class="text-slate-400 text-[11px] leading-relaxed">
+                Pengunjung atau recruiter dapat memasukkan API Key pribadi di menu Settings untuk akses tanpa batas.
+              </p>
+            </div>
+
+            <div class="p-2.5 rounded-xl bg-void-950/60 border border-white/5 space-y-1">
+              <div class="font-semibold text-white font-mono flex items-center gap-1.5">
+                <span class="text-amber-400">03.</span>
+                <span>Smart 429 Rotation & Fallback</span>
+              </div>
+              <p class="text-slate-400 text-[11px] leading-relaxed">
+                Jika model gratis terkena rate limit (HTTP 429), sistem otomatis memutar model cadangan atau beralih ke Local Core tanpa crash.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sidebar Card 3: Agent Capabilities & Digital Twin Profile -->
+        <div class="glass-panel p-5 rounded-2xl border-white/10 space-y-4">
+          <div class="flex items-center justify-between border-b border-white/10 pb-3">
+            <span class="font-mono text-xs text-sky-frost font-semibold flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-sky-frost"></span>
+              DIGITAL TWIN CAPABILITIES
+            </span>
+            <span class="text-[10px] font-mono text-slate-400">ARKANA AI</span>
+          </div>
+
+          <div class="space-y-3 text-xs text-slate-300">
+            <div class="p-2.5 rounded-xl bg-void-950/60 border border-white/5 space-y-1">
+              <div class="font-semibold text-white flex items-center gap-1.5">
+                <span class="text-arctic-cobalt">#</span>
+                <span>Arsitektur Sistem Logistik DrivePass</span>
+              </div>
+              <p class="text-[11px] text-slate-400 leading-relaxed">
+                Tanyakan skema Prisma PostgreSQL, Distance Matrix Service, dan optimasi latensi &lt;100ms.
+              </p>
+            </div>
+
+            <div class="p-2.5 rounded-xl bg-void-950/60 border border-white/5 space-y-1">
+              <div class="font-semibold text-white flex items-center gap-1.5">
+                <span class="text-sky-frost">#</span>
+                <span>Teknologi Web Portofolio Arkein</span>
+              </div>
+              <p class="text-[11px] text-slate-400 leading-relaxed">
+                Astro 5 Island Architecture, Tailwind CSS v4, dan animasi kinetik GSAP hardware-accelerated 60 FPS.
+              </p>
+            </div>
+
+            <div class="p-2.5 rounded-xl bg-void-950/60 border border-white/5 space-y-1">
+              <div class="font-semibold text-white flex items-center gap-1.5">
+                <span class="text-emerald-400">#</span>
+                <span>Filosofi Rekayasa & Standar Kualitas</span>
+              </div>
+              <p class="text-[11px] text-slate-400 leading-relaxed">
+                Prinsip sistem deterministik, metrik terverifikasi, dan estetika visual modern.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sidebar Card 4: Multi-turn Interaction Guide -->
+        <div class="glass-panel p-5 rounded-2xl border-white/10 space-y-3 font-mono text-xs">
+          <div class="text-slate-200 font-semibold flex items-center gap-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+            <span>TIPS INTERAKSI AGENTIC</span>
+          </div>
+          <p class="text-slate-400 text-[11px] leading-relaxed">
+            Karena AI ini memiliki <strong>Context Retention</strong>, Anda tidak perlu mengulang konteks di setiap giliran. Anda dapat bertanya secara bertahap seperti:
+          </p>
+          <div class="p-2.5 rounded-lg bg-void-900 border border-white/5 space-y-1 text-[10.5px] text-sky-200">
+            <div>1. "Apa peran Arkana di proyek DrivePass?"</div>
+            <div>2. "Lalu teknologi apa yang dipakai untuk backend-nya?"</div>
+            <div>3. "Kenapa memilih Prisma dibanding ORM lain?"</div>
+          </div>
+        </div>
+
+      </aside>
+
+    </div>
+
+  </main>
+</Layout>
