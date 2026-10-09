@@ -12,34 +12,142 @@
   </div>
 
   <div class="grid grid-cols-1 md:grid-cols-3 gap-6" data-reveal-group data-stagger-delay="120">
-    <div class="glass-panel reveal-item p-6 rounded-2xl border-white/10 space-y-4">
-      <div class="w-10 h-10 rounded-xl bg-arctic-cobalt/10 border border-arctic-cobalt/30 flex items-center justify-center text-arctic-cobalt font-mono font-bold">
-        01
+    <!-- Bento 01: AI Frameworks -->
+    <div class="glass-panel bento-card reveal-item p-6 rounded-2xl border-white/10 space-y-4 group cursor-pointer relative overflow-hidden select-none" data-layer="AUTONOMOUS_LAYER">
+      <!-- Background Decorative Layers (Contained to avoid layout stretching) -->
+      <div class="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+        <!-- Tactical HUD Corner Brackets -->
+        <span class="bento-hud-bracket bento-hud-tl absolute top-2 left-2 w-2 h-2 border-t border-l border-arctic-cobalt/40 transition-all duration-300"></span>
+        <span class="bento-hud-bracket bento-hud-tr absolute top-2 right-2 w-2 h-2 border-t border-r border-arctic-cobalt/40 transition-all duration-300"></span>
+        <span class="bento-hud-bracket bento-hud-bl absolute bottom-2 left-2 w-2 h-2 border-b border-l border-arctic-cobalt/40 transition-all duration-300"></span>
+        <span class="bento-hud-bracket bento-hud-br absolute bottom-2 right-2 w-2 h-2 border-b border-r border-arctic-cobalt/40 transition-all duration-300"></span>
+
+        <!-- Specular Glare & Ambient Glow -->
+        <div class="bento-card-glare"></div>
+        <div class="bento-ambient-glow"></div>
+        <div class="bento-scan-line"></div>
       </div>
-      <h3 class="font-heading text-xl font-bold text-white">AI & LLM Frameworks</h3>
-      <p class="text-xs text-slate-400 leading-relaxed">
-        LangGraph, LlamaIndex, PyTorch, HuggingFace, vLLM, TensorRT-LLM, RAG Evaluation, Prompt Routing & Self-Correction Loops.
-      </p>
+
+      <div class="flex items-center justify-between relative z-10">
+        <div class="w-10 h-10 rounded-xl bg-arctic-cobalt/10 border border-arctic-cobalt/30 flex items-center justify-center text-arctic-cobalt font-mono font-bold bento-badge">
+          01
+        </div>
+        <span class="text-[10px] font-mono text-slate-400 group-hover:text-arctic-cobalt transition-colors bento-layer-tag" data-original="AUTONOMOUS_LAYER">AUTONOMOUS_LAYER</span>
+      </div>
+      <h3 class="font-heading text-xl font-bold text-white group-hover:text-arctic-cobalt transition-colors relative z-10">AI & LLM Frameworks</h3>
+      
+      <!-- Kinetic Tech Chips -->
+      <div class="flex flex-wrap gap-1.5 pt-1 relative z-10 bento-chips-container">
+        {["LangGraph", "LlamaIndex", "PyTorch", "vLLM", "TensorRT-LLM", "RAG Eval", "Prompt Routing"].map(chip => (
+          <span class="kinetic-chip px-2.5 py-1 rounded-lg bg-void-950/80 border border-white/5 text-[11px] font-mono text-slate-300 hover:border-arctic-cobalt/60 hover:text-white transition-all cursor-pointer">
+            {chip}
+          </span>
+        ))}
+      </div>
+
+      <!-- Live Terminal Drawer Preview with Pulse Cursor -->
+      <div class="pt-3 border-t border-white/5 font-mono text-[11px] space-y-1 bg-void-950/60 p-2.5 rounded-xl border border-white/5 group-hover:border-arctic-cobalt/40 transition-all bento-terminal-drawer relative z-10">
+        <div class="text-slate-400 flex items-center justify-between">
+          <span>$ python -m agent.run --eval</span>
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+        </div>
+        <div class="text-arctic-cobalt font-semibold flex items-center gap-1">
+          <span>&gt; Graph compiled: 14 nodes, 0 cycles</span>
+          <span class="inline-block w-1.5 h-3 bg-arctic-cobalt/80 animate-pulse"></span>
+        </div>
+      </div>
     </div>
 
-    <div class="glass-panel reveal-item p-6 rounded-2xl border-white/10 space-y-4">
-      <div class="w-10 h-10 rounded-xl bg-sky-frost/10 border border-sky-frost/30 flex items-center justify-center text-sky-frost font-mono font-bold">
-        02
+    <!-- Bento 02: Backend & Inference -->
+    <div class="glass-panel bento-card reveal-item p-6 rounded-2xl border-white/10 space-y-4 group cursor-pointer relative overflow-hidden select-none" data-layer="INFERENCE_LAYER">
+      <!-- Background Decorative Layers (Contained to avoid layout stretching) -->
+      <div class="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+        <!-- Tactical HUD Corner Brackets -->
+        <span class="bento-hud-bracket bento-hud-tl absolute top-2 left-2 w-2 h-2 border-t border-l border-sky-frost/40 transition-all duration-300"></span>
+        <span class="bento-hud-bracket bento-hud-tr absolute top-2 right-2 w-2 h-2 border-t border-r border-sky-frost/40 transition-all duration-300"></span>
+        <span class="bento-hud-bracket bento-hud-bl absolute bottom-2 left-2 w-2 h-2 border-b border-l border-sky-frost/40 transition-all duration-300"></span>
+        <span class="bento-hud-bracket bento-hud-br absolute bottom-2 right-2 w-2 h-2 border-b border-r border-sky-frost/40 transition-all duration-300"></span>
+
+        <!-- Specular Glare & Ambient Glow -->
+        <div class="bento-card-glare"></div>
+        <div class="bento-ambient-glow"></div>
+        <div class="bento-scan-line"></div>
       </div>
-      <h3 class="font-heading text-xl font-bold text-white">Backend & Inference Infrastructure</h3>
-      <p class="text-xs text-slate-400 leading-relaxed">
-        Python (FastAPI, AsyncIO), Go, Redis semantic caching, Qdrant / pgvector, Docker, Kubernetes, WebSockets streaming.
-      </p>
+
+      <div class="flex items-center justify-between relative z-10">
+        <div class="w-10 h-10 rounded-xl bg-sky-frost/10 border border-sky-frost/30 flex items-center justify-center text-sky-frost font-mono font-bold bento-badge">
+          02
+        </div>
+        <span class="text-[10px] font-mono text-slate-400 group-hover:text-sky-frost transition-colors bento-layer-tag" data-original="INFERENCE_LAYER">INFERENCE_LAYER</span>
+      </div>
+      <h3 class="font-heading text-xl font-bold text-white group-hover:text-sky-frost transition-colors relative z-10">Backend & Inference Infrastructure</h3>
+      
+      <!-- Kinetic Tech Chips -->
+      <div class="flex flex-wrap gap-1.5 pt-1 relative z-10 bento-chips-container">
+        {["FastAPI", "AsyncIO", "Go", "Redis Cache", "Qdrant", "Docker", "Kubernetes", "WebSockets"].map(chip => (
+          <span class="kinetic-chip px-2.5 py-1 rounded-lg bg-void-950/80 border border-white/5 text-[11px] font-mono text-slate-300 hover:border-sky-frost/60 hover:text-white transition-all cursor-pointer">
+            {chip}
+          </span>
+        ))}
+      </div>
+
+      <!-- Live Terminal Drawer Preview with Pulse Cursor -->
+      <div class="pt-3 border-t border-white/5 font-mono text-[11px] space-y-1 bg-void-950/60 p-2.5 rounded-xl border border-white/5 group-hover:border-sky-frost/40 transition-all bento-terminal-drawer relative z-10">
+        <div class="text-slate-400 flex items-center justify-between">
+          <span>$ docker compose up --scale vllm=4</span>
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+        </div>
+        <div class="text-sky-frost font-semibold flex items-center gap-1">
+          <span>&gt; Cluster online: 4x vLLM, 112 tok/s</span>
+          <span class="inline-block w-1.5 h-3 bg-sky-frost/80 animate-pulse"></span>
+        </div>
+      </div>
     </div>
 
-    <div class="glass-panel reveal-item p-6 rounded-2xl border-white/10 space-y-4">
-      <div class="w-10 h-10 rounded-xl bg-pure-platinum/10 border border-pure-platinum/30 flex items-center justify-center text-pure-platinum font-mono font-bold">
-        03
+    <!-- Bento 03: Modern Frontend -->
+    <div class="glass-panel bento-card reveal-item p-6 rounded-2xl border-white/10 space-y-4 group cursor-pointer relative overflow-hidden select-none" data-layer="INTERFACE_LAYER">
+      <!-- Background Decorative Layers (Contained to avoid layout stretching) -->
+      <div class="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+        <!-- Tactical HUD Corner Brackets -->
+        <span class="bento-hud-bracket bento-hud-tl absolute top-2 left-2 w-2 h-2 border-t border-l border-pure-platinum/40 transition-all duration-300"></span>
+        <span class="bento-hud-bracket bento-hud-tr absolute top-2 right-2 w-2 h-2 border-t border-r border-pure-platinum/40 transition-all duration-300"></span>
+        <span class="bento-hud-bracket bento-hud-bl absolute bottom-2 left-2 w-2 h-2 border-b border-l border-pure-platinum/40 transition-all duration-300"></span>
+        <span class="bento-hud-bracket bento-hud-br absolute bottom-2 right-2 w-2 h-2 border-b border-r border-pure-platinum/40 transition-all duration-300"></span>
+
+        <!-- Specular Glare & Ambient Glow -->
+        <div class="bento-card-glare"></div>
+        <div class="bento-ambient-glow"></div>
+        <div class="bento-scan-line"></div>
       </div>
-      <h3 class="font-heading text-xl font-bold text-white">Modern Frontend & UI/UX</h3>
-      <p class="text-xs text-slate-400 leading-relaxed">
-        Astro, Tailwind CSS v4, Aurora Glassmorphism UI design, Vanilla JS Native DOM reactivity, SVG / Canvas data visualizers.
-      </p>
+
+      <div class="flex items-center justify-between relative z-10">
+        <div class="w-10 h-10 rounded-xl bg-pure-platinum/10 border border-pure-platinum/30 flex items-center justify-center text-pure-platinum font-mono font-bold bento-badge">
+          03
+        </div>
+        <span class="text-[10px] font-mono text-slate-400 group-hover:text-pure-platinum transition-colors bento-layer-tag" data-original="INTERFACE_LAYER">INTERFACE_LAYER</span>
+      </div>
+      <h3 class="font-heading text-xl font-bold text-white group-hover:text-pure-platinum transition-colors relative z-10">Modern Frontend & UI/UX</h3>
+      
+      <!-- Kinetic Tech Chips -->
+      <div class="flex flex-wrap gap-1.5 pt-1 relative z-10 bento-chips-container">
+        {["Astro", "Tailwind CSS", "GSAP Physics", "Vanilla DOM", "SVG Streamer", "Zero-Bloat UI"].map(chip => (
+          <span class="kinetic-chip px-2.5 py-1 rounded-lg bg-void-950/80 border border-white/5 text-[11px] font-mono text-slate-300 hover:border-pure-platinum/60 hover:text-white transition-all cursor-pointer">
+            {chip}
+          </span>
+        ))}
+      </div>
+
+      <!-- Live Terminal Drawer Preview with Pulse Cursor -->
+      <div class="pt-3 border-t border-white/5 font-mono text-[11px] space-y-1 bg-void-950/60 p-2.5 rounded-xl border border-white/5 group-hover:border-pure-platinum/40 transition-all bento-terminal-drawer relative z-10">
+        <div class="text-slate-400 flex items-center justify-between">
+          <span>$ astro build &amp;&amp; vite optimize</span>
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+        </div>
+        <div class="text-pure-platinum font-semibold flex items-center gap-1">
+          <span>&gt; Client payload: 29.4kB (Pure Speed)</span>
+          <span class="inline-block w-1.5 h-3 bg-pure-platinum/80 animate-pulse"></span>
+        </div>
+      </div>
     </div>
   </div>
 </section>

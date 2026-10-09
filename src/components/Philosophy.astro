@@ -14,37 +14,83 @@
     </p>
   </div>
 
+  <!-- Connecting Architectural Data Conduit Track -->
+  <div id="philosophy-conduit-track" class="hidden lg:flex items-center justify-between px-4 text-[10px] font-mono text-slate-500 relative overflow-hidden py-2">
+    <div class="absolute left-6 right-6 top-1/2 -translate-y-1/2 h-[1px] bg-gradient-to-r from-arctic-cobalt/30 via-sky-frost/40 to-pure-platinum/30"></div>
+    <div id="conduit-pulse-bead" class="conduit-pulse-bead" aria-hidden="true"></div>
+    <span class="conduit-node relative z-10 px-2 py-0.5 rounded bg-void-950 border border-arctic-cobalt/40 text-arctic-cobalt font-bold transition-all duration-300">01. BENCHMARK</span>
+    <span class="conduit-node relative z-10 px-2 py-0.5 rounded bg-void-950 border border-sky-frost/40 text-sky-frost font-bold transition-all duration-300">02. RETRIEVAL</span>
+    <span class="conduit-node relative z-10 px-2 py-0.5 rounded bg-void-950 border border-pure-platinum/40 text-pure-platinum font-bold transition-all duration-300">03. INFERENCE</span>
+    <span class="conduit-node relative z-10 px-2 py-0.5 rounded bg-void-950 border border-blue-400/40 text-blue-300 font-bold transition-all duration-300">04. HUMAN INTERFACE</span>
+  </div>
+
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" data-reveal-group data-stagger-delay="100">
-    <div class="glass-panel reveal-item p-6 rounded-2xl border-white/10 space-y-3 relative group">
-      <div class="font-mono text-xs text-arctic-cobalt font-bold">PHASE 01</div>
-      <h3 class="font-heading text-lg font-bold text-white">Benchmark & Metric Formulation</h3>
+    <!-- Phase 01 -->
+    <div class="glass-panel reveal-item p-6 rounded-2xl border-white/10 space-y-3 relative group cursor-pointer overflow-hidden philosophy-card">
+      <div class="flex items-center justify-between">
+        <span class="font-mono text-xs text-arctic-cobalt font-bold">PHASE 01</span>
+        <span class="text-[10px] font-mono text-slate-500 opacity-60 group-hover:opacity-100 group-hover:text-arctic-cobalt transition-all">[ EVAL_INIT ]</span>
+      </div>
+      <h3 class="font-heading text-lg font-bold text-white transition-colors scramble-target" data-original-text="Benchmark & Metric Formulation">Benchmark & Metric Formulation</h3>
       <p class="text-xs text-slate-400 leading-relaxed">
         Menentukan baseline performa, ground-truth dataset, dan metrik evaluasi kuantitatif sebelum menulis model.
       </p>
+      <!-- Telemetry Reveal Pill -->
+      <div class="pt-2 border-t border-white/5 flex items-center justify-between text-[11px] font-mono text-arctic-cobalt/80">
+        <span>Loss &lt; 0.04</span>
+        <span class="text-[10px] text-slate-500">ROC-AUC 0.98</span>
+      </div>
     </div>
 
-    <div class="glass-panel reveal-item p-6 rounded-2xl border-white/10 space-y-3 relative group">
-      <div class="font-mono text-xs text-sky-frost font-bold">PHASE 02</div>
-      <h3 class="font-heading text-lg font-bold text-white">Agentic Loops & Hybrid Retrieval</h3>
+    <!-- Phase 02 -->
+    <div class="glass-panel reveal-item p-6 rounded-2xl border-white/10 space-y-3 relative group cursor-pointer overflow-hidden philosophy-card">
+      <div class="flex items-center justify-between">
+        <span class="font-mono text-xs text-sky-frost font-bold">PHASE 02</span>
+        <span class="text-[10px] font-mono text-slate-500 opacity-60 group-hover:opacity-100 group-hover:text-sky-frost transition-all">[ RAG_ORCH ]</span>
+      </div>
+      <h3 class="font-heading text-lg font-bold text-white transition-colors scramble-target" data-original-text="Agentic Loops & Hybrid Retrieval">Agentic Loops & Hybrid Retrieval</h3>
       <p class="text-xs text-slate-400 leading-relaxed">
         Orkestrasi alur reasoning, tool calling, self-correction, dan hybrid search (BM25 + Dense) untuk presisi maksimal.
       </p>
+      <!-- Telemetry Reveal Pill -->
+      <div class="pt-2 border-t border-white/5 flex items-center justify-between text-[11px] font-mono text-sky-frost/80">
+        <span>Hybrid RRF 99.4%</span>
+        <span class="text-[10px] text-slate-500">BM25 + Dense</span>
+      </div>
     </div>
 
-    <div class="glass-panel reveal-item p-6 rounded-2xl border-white/10 space-y-3 relative group">
-      <div class="font-mono text-xs text-pure-platinum font-bold">PHASE 03</div>
-      <h3 class="font-heading text-lg font-bold text-white">Low-Latency Inference Delivery</h3>
+    <!-- Phase 03 -->
+    <div class="glass-panel reveal-item p-6 rounded-2xl border-white/10 space-y-3 relative group cursor-pointer overflow-hidden philosophy-card">
+      <div class="flex items-center justify-between">
+        <span class="font-mono text-xs text-pure-platinum font-bold">PHASE 03</span>
+        <span class="text-[10px] font-mono text-slate-500 opacity-60 group-hover:opacity-100 group-hover:text-pure-platinum transition-all">[ VLLM_CORE ]</span>
+      </div>
+      <h3 class="font-heading text-lg font-bold text-white transition-colors scramble-target" data-original-text="Low-Latency Inference Delivery">Low-Latency Inference Delivery</h3>
       <p class="text-xs text-slate-400 leading-relaxed">
         Kuantisasi model, batching dinamis via vLLM, semantic caching Redis, dan arsitektur async non-blocking.
       </p>
+      <!-- Telemetry Reveal Pill -->
+      <div class="pt-2 border-t border-white/5 flex items-center justify-between text-[11px] font-mono text-pure-platinum/80">
+        <span>TTFT 14ms</span>
+        <span class="text-[10px] text-slate-500">112 tok/s</span>
+      </div>
     </div>
 
-    <div class="glass-panel reveal-item p-6 rounded-2xl border-white/10 space-y-3 relative group">
-      <div class="font-mono text-xs text-blue-300 font-bold">PHASE 04</div>
-      <h3 class="font-heading text-lg font-bold text-white">Human-Centric Web Interface</h3>
+    <!-- Phase 04 -->
+    <div class="glass-panel reveal-item p-6 rounded-2xl border-white/10 space-y-3 relative group cursor-pointer overflow-hidden philosophy-card">
+      <div class="flex items-center justify-between">
+        <span class="font-mono text-xs text-blue-300 font-bold">PHASE 04</span>
+        <span class="text-[10px] font-mono text-slate-500 opacity-60 group-hover:opacity-100 group-hover:text-blue-300 transition-all">[ HUMAN_LOOP ]</span>
+      </div>
+      <h3 class="font-heading text-lg font-bold text-white transition-colors scramble-target" data-original-text="Human-Centric Web Interface">Human-Centric Web Interface</h3>
       <p class="text-xs text-slate-400 leading-relaxed">
         Antarmuka modern responsif dengan visualisasi streaming token real-time dan kontrol human-in-the-loop yang mulus.
       </p>
+      <!-- Telemetry Reveal Pill -->
+      <div class="pt-2 border-t border-white/5 flex items-center justify-between text-[11px] font-mono text-blue-300/80">
+        <span>60 FPS Stream</span>
+        <span class="text-[10px] text-slate-500">Native DOM</span>
+      </div>
     </div>
   </div>
 </section>

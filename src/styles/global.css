@@ -109,26 +109,841 @@ body {
   }
 }
 
-/* Frosted Aurora Glass Surfaces */
+/* Full-Viewport Interactive Aurora Cursor Glow (Background Follower) */
+.aurora-mouse-spotlight {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 850px;
+  height: 850px;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(
+    circle,
+    rgba(96, 165, 250, 0.22) 0%,
+    rgba(56, 189, 248, 0.12) 35%,
+    rgba(30, 58, 138, 0.06) 60%,
+    transparent 75%
+  );
+  filter: blur(85px);
+  transform: translate3d(-50%, -50%, 0);
+  opacity: 0;
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+  z-index: -2;
+}
+
+/* Frosted Aurora Glass Surfaces with 3D Depth & Flowing Sheen */
 .glass-panel {
+  position: relative;
   background: rgba(12, 19, 32, 0.72);
   backdrop-filter: blur(22px);
   -webkit-backdrop-filter: blur(22px);
   border: 1px solid rgba(255, 255, 255, 0.10);
   box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.5), inset 0 1px 0 0 rgba(255, 255, 255, 0.15);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              background 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  isolation: isolate;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+/* Internal Aurora Ambient Sheen on Hover */
+.glass-panel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    135deg,
+    rgba(96, 165, 250, 0.14) 0%,
+    rgba(56, 189, 248, 0.05) 50%,
+    transparent 100%
+  );
+  opacity: 0;
+  transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.glass-panel:hover::before {
+  opacity: 1;
 }
 
 .glass-panel:hover {
-  border-color: rgba(96, 165, 250, 0.45);
-  box-shadow: 0 20px 48px -10px rgba(0, 0, 0, 0.6), 0 0 28px 0 rgba(96, 165, 250, 0.20);
+  border-color: rgba(96, 165, 250, 0.50);
+  box-shadow: 0 24px 50px -12px rgba(0, 0, 0, 0.7),
+              0 0 35px 2px rgba(96, 165, 250, 0.22),
+              inset 0 1px 0 0 rgba(255, 255, 255, 0.30);
+  background: rgba(14, 23, 40, 0.82);
+}
+
+/* 0. Hero: Interactive Telemetry HUD & Holographic Monitor */
+#hero .glass-panel {
+  transition: border-color 0.4s ease,
+              box-shadow 0.45s ease,
+              background 0.4s ease;
+}
+
+#hero-telemetry-card {
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+}
+
+#hero-telemetry-card:hover {
+  border-color: rgba(56, 189, 248, 0.65);
+  box-shadow: 0 32px 64px -16px rgba(0, 0, 0, 0.85),
+              0 0 45px rgba(56, 189, 248, 0.32),
+              inset 0 1px 0 rgba(255, 255, 255, 0.45);
+}
+
+/* Holographic Diagnostic Scanline Beam */
+.hero-scan-beam {
+  position: absolute;
+  top: -60px;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(56, 189, 248, 0.25) 50%,
+    rgba(96, 165, 250, 0.50) 100%
+  );
+  pointer-events: none;
+  opacity: 0;
+  filter: blur(3px);
+  z-index: 8;
+}
+
+/* Localized Internal Specular Glare Layer */
+.hero-card-glare {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle 240px at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(96, 165, 250, 0.18),
+    transparent 70%
+  );
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  z-index: 5;
+}
+
+#hero-telemetry-card:hover .hero-card-glare {
+  opacity: 1;
+}
+
+/* High-Tech Tactical HUD Corner Brackets Hover Expansion */
+.hud-bracket {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.3s ease,
+              filter 0.3s ease;
+}
+
+#hero-telemetry-card:hover .hud-tl {
+  transform: translate3d(-3.5px, -3.5px, 0);
+  border-color: #38bdf8;
+  filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.8));
+}
+
+#hero-telemetry-card:hover .hud-tr {
+  transform: translate3d(3.5px, -3.5px, 0);
+  border-color: #38bdf8;
+  filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.8));
+}
+
+#hero-telemetry-card:hover .hud-bl {
+  transform: translate3d(-3.5px, 3.5px, 0);
+  border-color: #38bdf8;
+  filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.8));
+}
+
+#hero-telemetry-card:hover .hud-br {
+  transform: translate3d(3.5px, 3.5px, 0);
+  border-color: #38bdf8;
+  filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.8));
+}
+
+/* Interactive Sonar Ping on Hero Card Click */
+.hero-probe-sonar-ring {
+  position: absolute;
+  border-radius: 9999px;
+  border: 2px solid rgba(56, 189, 248, 0.9);
+  box-shadow: 0 0 24px rgba(56, 189, 248, 0.8), inset 0 0 16px rgba(96, 165, 250, 0.5);
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0);
+  animation: sonarBurst 0.85s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+  z-index: 15;
+}
+
+@keyframes sonarBurst {
+  0% {
+    width: 20px;
+    height: 20px;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(0.2);
+  }
+  100% {
+    width: 520px;
+    height: 520px;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+.neural-wave-path {
+  will-change: d;
+  transition: stroke 0.3s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .neural-wave-path {
+    animation: none;
+  }
+  .hud-bracket {
+    transform: none !important;
+  }
+}
+
+/* 0.5. About: Bento Profile Cards with Specular Glare & Tactical HUD */
+.about-bento-card {
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+  transition: border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              background 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, box-shadow;
+}
+
+.about-bento-card:hover {
+  border-color: rgba(96, 165, 250, 0.52);
+  background: linear-gradient(145deg, rgba(16, 26, 46, 0.92) 0%, rgba(9, 14, 26, 0.85) 100%);
+  box-shadow: 0 24px 50px -12px rgba(0, 0, 0, 0.78),
+              0 0 35px 2px rgba(96, 165, 250, 0.20),
+              inset 0 1px 0 0 rgba(255, 255, 255, 0.25);
+}
+
+/* Localized Internal Specular Glare Layer (Behind text, perfectly readable) */
+.about-card-glare {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle 380px at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(96, 165, 250, 0.16) 0%,
+    rgba(56, 189, 248, 0.08) 35%,
+    transparent 70%
+  );
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  z-index: 2;
+  mix-blend-mode: screen;
+}
+
+.about-bento-card:hover .about-card-glare {
+  opacity: 1;
+}
+
+/* Cybernetic Laser Top Scan Line */
+.about-scan-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(56, 189, 248, 0.4) 20%,
+    #38bdf8 50%,
+    rgba(96, 165, 250, 0.4) 80%,
+    transparent 100%
+  );
+  opacity: 0;
+  transform: scaleX(0.2);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+  pointer-events: none;
+  z-index: 5;
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.8), 0 0 22px rgba(96, 165, 250, 0.5);
+}
+
+.about-bento-card:hover .about-scan-line {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+/* Tactical HUD Corner Brackets Hover Expansion */
+.about-hud-bracket {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.3s ease,
+              filter 0.3s ease;
+}
+
+.about-bento-card:hover .about-hud-tl {
+  transform: translate3d(-2.5px, -2.5px, 0);
+  border-color: #38bdf8;
+  filter: drop-shadow(0 0 6px rgba(56, 189, 248, 0.85));
+}
+
+.about-bento-card:hover .about-hud-tr {
+  transform: translate3d(2.5px, -2.5px, 0);
+  border-color: #38bdf8;
+  filter: drop-shadow(0 0 6px rgba(56, 189, 248, 0.85));
+}
+
+.about-bento-card:hover .about-hud-bl {
+  transform: translate3d(-2.5px, 2.5px, 0);
+  border-color: #38bdf8;
+  filter: drop-shadow(0 0 6px rgba(56, 189, 248, 0.85));
+}
+
+.about-bento-card:hover .about-hud-br {
+  transform: translate3d(2.5px, 2.5px, 0);
+  border-color: #38bdf8;
+  filter: drop-shadow(0 0 6px rgba(56, 189, 248, 0.85));
+}
+
+/* Interactive Value Chips in Main Story */
+.about-value-chip {
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.2s ease,
+              border-color 0.2s ease,
+              box-shadow 0.22s ease;
+}
+
+.about-value-chip:hover {
+  transform: translateY(-2.5px) scale(1.03);
+  background-color: rgba(15, 23, 42, 0.95);
+  box-shadow: 0 6px 16px -3px rgba(0, 0, 0, 0.6), 0 0 14px rgba(96, 165, 250, 0.25);
+}
+
+/* Interactive Persona Snapshot Rows */
+.about-attr-row {
+  padding-left: 0.6rem;
+  padding-right: 0.6rem;
+  border-radius: 0.5rem;
+  transition: background-color 0.25s ease, padding 0.25s ease, border-color 0.25s ease;
+}
+
+.about-attr-row:hover {
+  background-color: rgba(96, 165, 250, 0.08);
+  border-color: rgba(96, 165, 250, 0.25);
+}
+
+.about-attr-row:hover span:last-child {
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(96, 165, 250, 0.45);
+}
+
+/* Pillar Badges (01, 02, 03) */
+.about-pillar-badge {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s ease,
+              border-color 0.3s ease,
+              background-color 0.3s ease;
+}
+
+.about-bento-card:hover .about-pillar-badge {
+  transform: translateY(-2px) scale(1.06);
+  box-shadow: 0 0 18px rgba(96, 165, 250, 0.35);
+  border-color: rgba(96, 165, 250, 0.6);
+}
+
+/* 1. Philosophy: Cybernetic Decrypt Focus */
+.philosophy-card {
+  transition: border-color 0.4s ease,
+              background 0.4s ease;
+}
+
+.philosophy-card:hover {
+  border-color: rgba(96, 165, 250, 0.70);
+  background: linear-gradient(180deg, rgba(20, 32, 60, 0.92) 0%, rgba(12, 19, 32, 0.85) 100%);
+}
+
+.scramble-target {
+  display: inline-block;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+}
+
+/* 2. Case Studies: Cybernetic Compact Showcase with Dynamic Glare & HUD */
+.case-study-card {
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+  transform-style: preserve-3d;
+  will-change: transform, box-shadow;
+  transition: border-color 0.4s ease,
+              box-shadow 0.45s ease,
+              background 0.4s ease;
+}
+
+.case-study-card:hover {
+  border-color: rgba(56, 189, 248, 0.65);
+  background: linear-gradient(135deg, rgba(20, 34, 60, 0.95) 0%, rgba(10, 16, 28, 0.90) 100%);
+  box-shadow: 0 24px 50px -12px rgba(0, 0, 0, 0.85),
+              0 0 35px rgba(56, 189, 248, 0.22),
+              inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Localized Specular Glare */
+.cs-card-glare {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle 200px at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(56, 189, 248, 0.20),
+    transparent 70%
+  );
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+  z-index: 5;
+}
+
+.case-study-card:hover .cs-card-glare {
+  opacity: 1;
+}
+
+/* Ambient Neon Glow */
+.cs-ambient-glow {
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  width: 160px;
+  height: 160px;
+  border-radius: 9999px;
+  background: rgba(56, 189, 248, 0.08);
+  filter: blur(35px);
+  pointer-events: none;
+  transition: all 0.5s ease;
+  z-index: 2;
+}
+
+.case-study-card:hover .cs-ambient-glow {
+  background: rgba(56, 189, 248, 0.22);
+  transform: scale(1.25);
+}
+
+/* Top Laser Scan Line */
+.cs-scan-line {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #38bdf8, #60a5fa, transparent);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.case-study-card:hover .cs-scan-line {
+  opacity: 1;
+  animation: csScanRun 1.4s ease-in-out infinite;
+}
+
+@keyframes csScanRun {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* Tactical HUD Corner Brackets Hover Expansion */
+.cs-hud-bracket {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.3s ease,
+              filter 0.3s ease;
+}
+
+.case-study-card:hover .cs-hud-tl {
+  transform: translate3d(-2.5px, -2.5px, 0);
+  border-color: #38bdf8;
+  filter: drop-shadow(0 0 6px rgba(56, 189, 248, 0.8));
+}
+
+.case-study-card:hover .cs-hud-tr {
+  transform: translate3d(2.5px, -2.5px, 0);
+  border-color: #38bdf8;
+  filter: drop-shadow(0 0 6px rgba(56, 189, 248, 0.8));
+}
+
+.case-study-card:hover .cs-hud-bl {
+  transform: translate3d(-2.5px, 2.5px, 0);
+  border-color: #38bdf8;
+  filter: drop-shadow(0 0 6px rgba(56, 189, 248, 0.8));
+}
+
+.case-study-card:hover .cs-hud-br {
+  transform: translate3d(2.5px, 2.5px, 0);
+  border-color: #38bdf8;
+  filter: drop-shadow(0 0 6px rgba(56, 189, 248, 0.8));
+}
+
+.circuit-wire {
+  transition: stroke-dashoffset 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.circuit-wire-2 {
+  transition: stroke-dashoffset 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.1s;
+}
+
+.case-study-card:hover .circuit-wire,
+.case-study-card:hover .circuit-wire-2 {
+  stroke-dashoffset: 0;
+}
+
+/* 3. Capabilities Matrix: Kinetic Tech Chips */
+.kinetic-chip, .tech-chip {
+  transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1),
+              background-color 0.25s ease,
+              border-color 0.25s ease,
+              color 0.25s ease;
+  user-select: none;
+}
+
+.kinetic-chip:hover, .tech-chip:hover {
+  transform: scale(1.10) translateY(-2px);
+  background: rgba(96, 165, 250, 0.15) !important;
+  border-color: rgba(56, 189, 248, 0.75) !important;
+  color: #ffffff !important;
+}
+
+/* 3. Capabilities Bento: Cybernetic Hover Architecture with Glare, HUD & Terminal Glow */
+.bento-card {
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+  transform-style: preserve-3d;
+  will-change: transform, box-shadow;
+  transition: border-color 0.4s ease,
+              box-shadow 0.45s ease,
+              background 0.4s ease;
+}
+
+.bento-card:hover {
+  border-color: rgba(56, 189, 248, 0.70);
+  background: linear-gradient(135deg, rgba(20, 34, 62, 0.95) 0%, rgba(10, 16, 28, 0.92) 100%);
+  box-shadow: 0 24px 50px -12px rgba(0, 0, 0, 0.85),
+              0 0 35px rgba(56, 189, 248, 0.25),
+              inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+/* Localized Specular Glare */
+.bento-card-glare {
+  position: absolute !important;
+  inset: 0;
+  background: radial-gradient(
+    circle 220px at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(56, 189, 248, 0.20),
+    transparent 70%
+  );
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+  z-index: 5;
+}
+
+.bento-card:hover .bento-card-glare {
+  opacity: 1;
+}
+
+/* Ambient Neon Glow */
+.bento-ambient-glow {
+  position: absolute !important;
+  top: -20px;
+  right: -20px;
+  width: 150px;
+  height: 150px;
+  border-radius: 9999px;
+  background: rgba(56, 189, 248, 0.08);
+  filter: blur(35px);
+  pointer-events: none;
+  transition: all 0.5s ease;
+  z-index: 1;
+}
+
+.bento-card:hover .bento-ambient-glow {
+  background: rgba(56, 189, 248, 0.22);
+  transform: scale(1.25);
+}
+
+/* Top Laser Scan Line */
+.bento-scan-line {
+  position: absolute !important;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #38bdf8, #60a5fa, transparent);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.bento-card:hover .bento-scan-line {
+  opacity: 1;
+  animation: csScanRun 1.4s ease-in-out infinite;
+}
+
+/* Tactical HUD Corner Brackets Hover Expansion */
+.bento-hud-bracket {
+  position: absolute !important;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.3s ease,
+              filter 0.3s ease;
+}
+
+.bento-card:hover .bento-hud-tl {
+  transform: translate3d(-2.5px, -2.5px, 0);
+  border-color: #38bdf8;
+  filter: drop-shadow(0 0 6px rgba(56, 189, 248, 0.8));
+}
+
+.bento-card:hover .bento-hud-tr {
+  transform: translate3d(2.5px, -2.5px, 0);
+  border-color: #38bdf8;
+  filter: drop-shadow(0 0 6px rgba(56, 189, 248, 0.8));
+}
+
+.bento-card:hover .bento-hud-bl {
+  transform: translate3d(-2.5px, 2.5px, 0);
+  border-color: #38bdf8;
+  filter: drop-shadow(0 0 6px rgba(56, 189, 248, 0.8));
+}
+
+.bento-card:hover .bento-hud-br {
+  transform: translate3d(2.5px, 2.5px, 0);
+  border-color: #38bdf8;
+  filter: drop-shadow(0 0 6px rgba(56, 189, 248, 0.8));
+}
+
+/* Bento Badge Bounce & Glow */
+.bento-badge {
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+              background-color 0.3s ease,
+              border-color 0.3s ease,
+              box-shadow 0.3s ease;
+}
+
+.bento-card:hover .bento-badge {
+  transform: scale(1.12) rotate(-4deg);
+  box-shadow: 0 0 16px rgba(56, 189, 248, 0.45);
+  border-color: rgba(56, 189, 248, 0.7);
+}
+
+/* Live Terminal Drawer Activation on Hover */
+.bento-terminal-drawer {
+  transition: background-color 0.3s ease,
+              border-color 0.35s ease,
+              box-shadow 0.35s ease,
+              transform 0.3s ease;
+}
+
+.bento-card:hover .bento-terminal-drawer {
+  background-color: rgba(3, 7, 18, 0.95);
+  border-color: rgba(56, 189, 248, 0.5);
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.18), inset 0 0 12px rgba(56, 189, 248, 0.08);
   transform: translateY(-2px);
+}
+
+/* 4. Neural Lab: Cybernetic Command Center Surge */
+#neural-lab .glass-panel {
+  transition: border-color 0.4s ease,
+              box-shadow 0.45s ease,
+              background 0.4s ease;
+}
+
+#neural-lab .glass-panel:hover {
+  border-color: rgba(56, 189, 248, 0.85);
+  box-shadow: 0 32px 64px -15px rgba(0, 0, 0, 0.88), 
+              0 0 55px rgba(56, 189, 248, 0.38),
+              inset 0 0 25px rgba(56, 189, 248, 0.12);
+}
+
+/* 5. Contact Section: Exclusively Features Interactive 3D Perspective Tilt */
+#contact .glass-panel {
+  transform-style: preserve-3d;
+  transition: border-color 0.4s ease,
+              box-shadow 0.45s ease,
+              background 0.4s ease;
+}
+
+#contact .glass-panel:hover {
+  border-color: rgba(96, 165, 250, 0.65);
+  box-shadow: 0 32px 64px -16px rgba(0, 0, 0, 0.85),
+              0 0 45px 3px rgba(96, 165, 250, 0.32),
+              inset 0 1px 0 0 rgba(255, 255, 255, 0.40);
+  background: rgba(15, 23, 42, 0.88);
+}
+
+/* Uplink Radar Background in Contact Container */
+.uplink-radar-bg {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.radar-pulse-ring {
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  border-radius: 9999px;
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.25);
+  pointer-events: none;
+  animation: radarRingExpand 6s cubic-bezier(0.1, 0.7, 0.2, 1) infinite;
+}
+
+.radar-pulse-1 { animation-delay: 0s; }
+.radar-pulse-2 { animation-delay: 2s; }
+.radar-pulse-3 { animation-delay: 4s; }
+
+@keyframes radarRingExpand {
+  0% {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(3.8);
+    opacity: 0;
+  }
+}
+
+.radar-sweep-beam {
+  position: absolute;
+  width: 380px;
+  height: 380px;
+  border-radius: 9999px;
+  background: conic-gradient(from 0deg, transparent 0deg, transparent 300deg, rgba(56, 189, 248, 0.22) 360deg);
+  animation: radarBeamRotate 7s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes radarBeamRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Contact Channel Cards: Kinetic Magnetic & Channel Laser Perimeter */
+.contact-channel-card {
+  position: relative;
+  transform-style: preserve-3d;
+  will-change: transform, box-shadow;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.channel-laser-border {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.5px;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+
+.contact-channel-card:hover .channel-laser-border {
+  opacity: 1;
+}
+
+.border-whatsapp {
+  background: linear-gradient(135deg, #10b981, #34d399, transparent, #10b981);
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.45);
+}
+
+.border-instagram {
+  background: linear-gradient(135deg, #ec4899, #f43f5e, transparent, #ec4899);
+  box-shadow: 0 0 20px rgba(236, 72, 153, 0.45);
+}
+
+.border-github {
+  background: linear-gradient(135deg, #60a5fa, #38bdf8, transparent, #60a5fa);
+  box-shadow: 0 0 20px rgba(96, 165, 250, 0.45);
+}
+
+/* Ensure inner content stays crisp with layered depth, without breaking absolute overlays */
+.glass-panel > *:not([aria-hidden="true"]):not([class*="absolute"]):not(span):not(svg) {
+  position: relative;
+  z-index: 2;
+  transform: translateZ(10px);
+}
+
+.case-study-card .cs-card-glare,
+.case-study-card .cs-ambient-glow,
+.case-study-card .cs-scan-line,
+.case-study-card .cs-hud-bracket,
+.case-study-card .blueprint-circuit-svg,
+.about-bento-card .about-card-glare,
+.about-bento-card .about-scan-line,
+.about-bento-card .about-hud-bracket {
+  position: absolute !important;
 }
 
 .glass-badge {
   background: rgba(96, 165, 250, 0.12);
   border: 1px solid rgba(96, 165, 250, 0.30);
   backdrop-filter: blur(10px);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-badge:hover {
+  background: rgba(96, 165, 250, 0.22);
+  border-color: rgba(96, 165, 250, 0.60);
+  box-shadow: 0 0 16px rgba(96, 165, 250, 0.35);
+  transform: translateY(-1px);
+}
+
+/* Button Aurora Glow & Shimmer Sweep */
+.btn-aurora {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-aurora::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -150%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    115deg,
+    transparent 20%,
+    rgba(255, 255, 255, 0.35) 50%,
+    transparent 80%
+  );
+  transform: rotate(25deg);
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+.btn-aurora:hover::after {
+  transform: translateX(180%) rotate(25deg);
+}
+
+.btn-aurora:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 0 28px rgba(96, 165, 250, 0.55), 0 12px 24px -6px rgba(56, 189, 248, 0.35);
+  filter: brightness(1.08);
+}
+
+.btn-aurora:active {
+  transform: translateY(0) scale(0.99);
 }
 
 /* ==========================================================================
@@ -148,40 +963,49 @@ body {
   pointer-events: none;
 }
 
-/* Base single element reveal with glass condensation blur */
-[data-reveal] {
-  opacity: 0;
-  transform: translate3d(0, 42px, 0) scale(0.97);
-  filter: blur(10px);
-  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.85s cubic-bezier(0.16, 1, 0.3, 1),
-              filter 0.85s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: transform, opacity, filter;
-}
-
-[data-reveal].revealed {
-  opacity: 1;
-  transform: translate3d(0, 0, 0) scale(1);
-  filter: blur(0px);
-  will-change: auto;
-}
-
-/* Stagger group container & children with cascade elevation */
+/* GSAP Scroll Reveal System - Hardware-accelerated 3D Spatial Entrance */
+[data-reveal],
 [data-reveal-group] .reveal-item {
   opacity: 0;
-  transform: translate3d(0, 34px, 0) scale(0.96);
-  filter: blur(8px);
-  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.75s cubic-bezier(0.16, 1, 0.3, 1),
-              filter 0.75s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: transform, opacity, filter;
+  backface-visibility: hidden;
 }
 
-[data-reveal-group].revealed .reveal-item {
+[data-reveal].revealed,
+[data-reveal-group].revealed .reveal-item,
+.reveal-item.revealed {
   opacity: 1;
-  transform: translate3d(0, 0, 0) scale(1);
-  filter: blur(0px);
-  will-change: auto;
+}
+
+/* Cybernetic Laser Lock-In Scan Beam (Active on Scroll Entrance) */
+.laser-lock-in-beam {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, rgba(56, 189, 248, 0.95) 25%, rgba(96, 165, 250, 0.95) 50%, #ffffff 75%, transparent 100%);
+  box-shadow: 0 0 14px rgba(56, 189, 248, 0.9), 0 0 28px rgba(96, 165, 250, 0.6);
+  transform: scaleX(0);
+  transform-origin: left center;
+  pointer-events: none;
+  z-index: 30;
+}
+
+/* Philosophy Data Conduit Energy Pulse */
+.conduit-pulse-bead {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 28px;
+  height: 4px;
+  border-radius: 9999px;
+  background: #38bdf8;
+  box-shadow: 0 0 14px #38bdf8, 0 0 26px #60a5fa;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 20;
+  opacity: 0;
 }
 
 /* Aurora Shimmer Edge Beam - Electric Sweep */
@@ -206,6 +1030,20 @@ body {
 
 .aurora-beam.revealed {
   animation: auroraBorderBeam 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Accessibility: Safe fallback for users preferring reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal],
+  [data-reveal-group] .reveal-item {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+  .laser-lock-in-beam,
+  .conduit-pulse-bead {
+    display: none !important;
+  }
 }
 
 
